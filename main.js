@@ -39,6 +39,9 @@ function findBookIndex(bookId) {
 
 function findBookContain(bookTitle) {
   const titleUpper = bookTitle.toUpperCase();
+  const ShowData = localStorage.getItem(STORAGE_KEY);
+  const data = JSON.parse(ShowData);
+  books = data;
     
   return books.filter((el) => el.title.toUpperCase().includes(titleUpper) ===  true);
 
@@ -188,7 +191,6 @@ function searchBook() {
     
     books = bookTarget;
     document.dispatchEvent(new Event(RENDER_EVENT));
-
   }
   else {
     alert('Masukkan judul Buku yang kamu cari');
