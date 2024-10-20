@@ -47,7 +47,8 @@ section h2 {
     text-align: center;
 }
 
-#bookForm {
+#bookForm,
+#editbookForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -127,9 +128,13 @@ button:hover {
     flex: 1;
     background-color: darkred;
 }
+.edit-button {
+    flex: 1;
+    background-color: darkorange;
+}
 
 .complete-button {
-    flex: 1;
+    flex: 2;
     background-color: darkgreen;
 }
 
