@@ -89,6 +89,39 @@ function addBook() {
   saveBook();
 }
 
+function editBook() {
+  const idbook = document.getElementById("idbook").value;
+  const titleUpdate = document.getElementById('titleUpdate').value;
+  const updateAuthor = document.getElementById('updateAuthor').value;
+  const updateYear = document.getElementById('updateYear').value;
+  const updateIsCompleted = document.getElementById('updateIsCompleted').checked;
+    
+  const bookUpdate = books.filter((el) => el.id == idbook);
+  console.log(bookUpdate);
+
+  bookUpdate[0].title = titleUpdate;
+  bookUpdate[0].author = updateAuthor;
+  bookUpdate[0].year = updateYear;
+  bookUpdate[0].isComplete = updateIsCompleted;
+    
+  saveBook();
+    
+  document.dispatchEvent(new Event(RENDER_EVENT));
+}
+
+function showForUpdate(bookId) {
+  document.getElementById('editWrapper').hidden = false;
+  document.getElementById('addBookWrapper').hidden = true;
+    
+  const bookFilter = books.filter((el) => el.id === bookId);
+    
+  document.getElementById('idbook').value = bookFilter[0].id;
+  document.getElementById('titleUpdate').value = bookFilter[0].title;
+  document.getElementById('updateAuthor').value = bookFilter[0].author;
+  const bookYear = document.getElementById('updateYear').value = bookFilter[0].year;
+  document.getElementById('updateIsCompleted').checked = bookFilter[0].isComplete;
+}
+
 
 function addBookToComplete(bookId) {
   const bookTarget = findBook(bookId);
@@ -148,17 +181,29 @@ function putBook(bookObject) {
     
   const buttonContainer = document.createElement('div');
   buttonContainer.classList.add('button-container');
+  
+  //  element tombol edit
+  const editButton = document.createElement('button');
+  editButton.setAttribute('data-testid', 'bookItemEditButton');
+  editButton.innerText = 'Edit';
+  editButton.classList.add('edit-button');
 
+  //  element tombol delete
   const deleteButton = document.createElement('button');
   deleteButton.setAttribute('data-testid', 'bookItemDeleteButton');
-  deleteButton.innerText = 'Hapus buku';
+  deleteButton.innerText = 'Hapus';
   deleteButton.classList.add('delete-button');
     
-  buttonContainer.append(completeButton, deleteButton);
+  buttonContainer.append(completeButton, editButton, deleteButton);
   container.append(buttonContainer);
 
+  
   deleteButton.addEventListener('click', function () {
     deleteBookFromShelf(bookObject.id);
+  });
+    
+  editButton.addEventListener('click', function () {
+    showForUpdate(bookObject.id);
   });
     
   if (bookObject.isComplete) {
@@ -200,10 +245,19 @@ function searchBook() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+
+  document.getElementById('editWrapper').hidden = true;
+    
   const submitForm = document.getElementById('bookForm');
   submitForm.addEventListener('submit', function (event) {
     event.preventDefault();
     addBook();
+  });
+    
+  const editbookForm = document.getElementById('editbookForm');
+  editbookForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    editBook();
   });
     
   const submitSearch = document.getElementById('searchBook');
