@@ -112,6 +112,7 @@ function editBook() {
 function showForUpdate(bookId) {
   document.getElementById('editWrapper').hidden = false;
   document.getElementById('addBookWrapper').hidden = true;
+  document.getElementById('titleUpdate').focus();
     
   const bookFilter = books.filter((el) => el.id === bookId);
     
@@ -204,6 +205,7 @@ function putBook(bookObject) {
     
   editButton.addEventListener('click', function () {
     showForUpdate(bookObject.id);
+    
   });
     
   if (bookObject.isComplete) {
@@ -272,7 +274,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener(SAVED_EVENT, function () {
-  alert('Kamu berhasil menambahkan atau memindahkan buku');
+    
+  alert('Kamu berhasil menambahkan atau mengupdate buku');
   //    console.log(localStorage.getItem(STORAGE_KEY));
 
 });
