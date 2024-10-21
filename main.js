@@ -39,9 +39,9 @@ function findBookIndex(bookId) {
 
 function findBookContain(bookTitle) {
   const titleUpper = bookTitle.toUpperCase();
+    
   const ShowData = localStorage.getItem(STORAGE_KEY);
-  const data = JSON.parse(ShowData);
-  books = data;
+  books = JSON.parse(ShowData);
     
   return books.filter((el) => el.title.toUpperCase().includes(titleUpper) ===  true);
 
@@ -90,6 +90,9 @@ function addBook() {
 }
 
 function editBook() {
+  const ShowData = localStorage.getItem(STORAGE_KEY);
+  books = JSON.parse(ShowData);
+    
   const idbook = document.getElementById("idbook").value;
   const titleUpdate = document.getElementById('titleUpdate').value;
   const updateAuthor = document.getElementById('updateAuthor').value;
@@ -97,7 +100,6 @@ function editBook() {
   const updateIsCompleted = document.getElementById('updateIsCompleted').checked;
     
   const bookUpdate = books.filter((el) => el.id == idbook);
-  console.log(bookUpdate);
 
   bookUpdate[0].title = titleUpdate;
   bookUpdate[0].author = updateAuthor;
@@ -231,12 +233,12 @@ function putBook(bookObject) {
 
 function searchBook() {
   const searchBookTitle = document.getElementById('searchBookTitle').value;
+    
   if (searchBookTitle !== '') {
-    const bookTarget = findBookContain(searchBookTitle);
+    books = findBookContain(searchBookTitle);
     
-    if (bookTarget == null) {return;}
-    
-    books = bookTarget;
+    if (books == null) {return;}
+
     document.dispatchEvent(new Event(RENDER_EVENT));
   }
   else {
@@ -275,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener(SAVED_EVENT, function () {
     
-  alert('Kamu berhasil menambahkan atau mengupdate buku');
+  alert('Kamu berhasil menyimpan buku');
   //    console.log(localStorage.getItem(STORAGE_KEY));
 
 });
