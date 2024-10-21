@@ -19,7 +19,34 @@ function generateBookObject(id, title, author, year, isComplete) {
   };
 }
 
+function isStorageExist() {
+  if (typeof(Storage) === undefined) {
+    alert('yaahh...browser Kamu tidak mendukung local Storage');
+    return false;
+  }
+  return true;
+}
+
+function getLocalStorage() {
+      const ShowData = localStorage.getItem(STORAGE_KEY);
+  const data = JSON.parse(ShowData);
+    return data
+}
+
+function loadDataFromStorage() {
+
+    const data = getLocalStorage()
+    
+  if (data != null) {
+    for (const book of data) {
+      books.push(book);
+    }
+  }
+  document.dispatchEvent(new Event(RENDER_EVENT));
+}
+
 function findBook(bookId) {
+     books = getLocalStorage()
   for (const bookItem of books) {
     if (bookItem.id === bookId) {
       return bookItem;
@@ -29,6 +56,7 @@ function findBook(bookId) {
 }
 
 function findBookIndex(bookId) {
+    books = getLocalStorage()
   for (const index in books) {
     if (books[index].id === bookId) {
       return index;
@@ -39,32 +67,10 @@ function findBookIndex(bookId) {
 
 function findBookContain(bookTitle) {
   const titleUpper = bookTitle.toUpperCase();
-    
-  const ShowData = localStorage.getItem(STORAGE_KEY);
-  books = JSON.parse(ShowData);
+
+  books = getLocalStorage()
     
   return books.filter((el) => el.title.toUpperCase().includes(titleUpper) ===  true);
-
-}
-
-function isStorageExist() {
-  if (typeof(Storage) === undefined) {
-    alert('yaahh...browser Kamu tidak mendukung local Storage');
-    return false;
-  }
-  return true;
-}
-
-function loadDataFromStorage() {
-  const ShowData = localStorage.getItem(STORAGE_KEY);
-  const data = JSON.parse(ShowData);
-    
-  if (data != null) {
-    for (const book of data) {
-      books.push(book);
-    }
-  }
-  document.dispatchEvent(new Event(RENDER_EVENT));
 }
 
 function saveBook() {
@@ -90,8 +96,7 @@ function addBook() {
 }
 
 function editBook() {
-  const ShowData = localStorage.getItem(STORAGE_KEY);
-  books = JSON.parse(ShowData);
+    books = getLocalStorage()
     
   const idbook = document.getElementById("idbook").value;
   const titleUpdate = document.getElementById('titleUpdate').value;
@@ -148,9 +153,10 @@ function undoBookFromComplete(bookId) {
 
 function deleteBookFromShelf(bookId) {
   const bookTarget = findBookIndex(bookId);
+    books = getLocalStorage()
     
   if (bookTarget === -1) {return;}
-    
+  
   books.splice(bookTarget, 1);
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveBook();
@@ -233,6 +239,7 @@ function putBook(bookObject) {
 
 function searchBook() {
   const searchBookTitle = document.getElementById('searchBookTitle').value;
+    document.getElementById('addBookWrapper').hidden = true;
     
   if (searchBookTitle !== '') {
     books = findBookContain(searchBookTitle);
