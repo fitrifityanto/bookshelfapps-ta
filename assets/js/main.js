@@ -32,10 +32,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener(SAVED_EVENT, function () {
-    
-  alert('Kamu berhasil menyimpan buku');
-  //    console.log(localStorage.getItem(STORAGE_KEY));
-
+  swal({
+    icon: "success",
+  });
 });
 
 document.addEventListener(RENDER_EVENT, function () {

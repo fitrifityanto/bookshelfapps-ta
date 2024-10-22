@@ -121,18 +121,29 @@ function undoBookFromComplete(bookId) {
 }
 
 function deleteBookFromShelf(bookId) {
-  if (resultBooks.length) {
-    const bookResultTarget = findResultBookIndex(bookId);
-    if (bookResultTarget === -1) {return;}
-    resultBooks.splice(bookResultTarget, 1);
-  }
+  swal({
+    title: "Yakin mau hapus?",
+    icon: "warning",
+    buttons: ["Batal", "iya, Hapus!"],
+    dangerMode: true,
+  })
+    .then((willDelete) => {
+      if (willDelete) {
+        if (resultBooks.length) {
+          const bookResultTarget = findResultBookIndex(bookId);
+          if (bookResultTarget === -1) {return;}
+          resultBooks.splice(bookResultTarget, 1);
+        }
     
-  const bookTarget = findBookIndex(bookId);
-  if (bookTarget === -1) {return;}
-  books.splice(bookTarget, 1);
-    
-  document.dispatchEvent(new Event(RENDER_EVENT));
-  saveBook();
+        const bookTarget = findBookIndex(bookId);
+        if (bookTarget === -1) {return;}
+        books.splice(bookTarget, 1);
+
+        document.dispatchEvent(new Event(RENDER_EVENT));
+        saveBook();
+      }
+    });
+
 }
 
 function searchBook() {
@@ -145,7 +156,13 @@ function searchBook() {
     if (resultBooks.length) {
       resultBooks.length = 0;
     }
-    if (booksTarget.length == 0) {return;}
+    if (booksTarget.length == 0) {
+      swal({
+        text: "maaf, tidak ada judul buku yang kamu cari",
+        icon: "warning",
+      });
+      return;
+    }
     for (const bookItem of booksTarget) {
       resultBooks.push(bookItem);
     }
@@ -153,7 +170,9 @@ function searchBook() {
   else {
     if (resultBooks.length) {
       resultBooks.length = 0;
+      document.getElementById('addBookWrapper').hidden = false;
     }
+    document.getElementById('addBookWrapper').hidden = false;
   }
   document.dispatchEvent(new Event(RENDER_EVENT));
 }
