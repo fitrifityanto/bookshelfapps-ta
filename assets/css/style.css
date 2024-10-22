@@ -13,6 +13,11 @@ body {
     line-height: 1.3;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 header {
     width: 100%;
     background-color: #527853;
