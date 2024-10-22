@@ -39,7 +39,7 @@ function putBook(bookObject) {
   editButton.setAttribute('data-testid', 'bookItemEditButton');
   editButton.classList.add('edit-button');
   const iconEdit = document.createElement('i');
-  iconEdit.classList.add('fa-solid', 'fa-pen', 'fa-lg');
+  iconEdit.classList.add('fa-solid', 'fa-pen');
   editButton.append(iconEdit);
 
   //  element tombol delete
@@ -47,7 +47,7 @@ function putBook(bookObject) {
   deleteButton.setAttribute('data-testid', 'bookItemDeleteButton');
   deleteButton.classList.add('delete-button');
   const iconDelete = document.createElement('i');
-  iconDelete.classList.add('fa-solid', 'fa-trash-can', 'fa-lg');
+  iconDelete.classList.add('fa-solid', 'fa-trash-can');
   deleteButton.append(iconDelete);
     
     
@@ -67,7 +67,7 @@ function putBook(bookObject) {
   if (bookObject.isComplete) {
     completeButton.setAttribute('data-testid', 'bookItemIsCompleteButton');
     const iconButton = document.createElement('i');
-    iconButton.classList.add('fa-solid', 'fa-arrow-right-from-bracket', 'fa-lg');
+    iconButton.classList.add('fa-solid', 'fa-arrow-right-from-bracket');
     completeButton.append(iconButton);
             
     completeButton.addEventListener('click', function () {
@@ -77,7 +77,7 @@ function putBook(bookObject) {
   else {
     completeButton.setAttribute('data-testid', 'bookItemIsCompleteButton');
     const iconButton = document.createElement('i');
-    iconButton.classList.add('fa-solid', 'fa-arrow-right-to-bracket', 'fa-lg');
+    iconButton.classList.add('fa-solid', 'fa-arrow-right-to-bracket');
     completeButton.append(iconButton);
       
         
