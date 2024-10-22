@@ -140,24 +140,24 @@ function searchBook() {
   document.getElementById('addBookWrapper').hidden = true;
     
   if (searchBookTitle !== '') {
-    const bookTarget = findBookContain(searchBookTitle);
+    const booksTarget = findBookContain(searchBookTitle);
     
     if (resultBooks.length) {
       resultBooks.length = 0;
     }
-    if (bookTarget.length == 0) {return;}
-    for (const bookItem of bookTarget) {
+    if (booksTarget.length == 0) {return;}
+    for (const bookItem of booksTarget) {
       resultBooks.push(bookItem);
     }
-
-    document.dispatchEvent(new Event(RENDER_EVENT));
   }
   else {
-    alert('Masukkan judul Buku yang kamu cari');
-    
+    if (resultBooks.length) {
+      resultBooks.length = 0;
+    }
   }
+  document.dispatchEvent(new Event(RENDER_EVENT));
 }
 
 
 
-export { books, resultBooks, generateId, generateBookObject, findBook, findBookIndex, findResultBookIndex, findBookContain, addBook, editBook, showForUpdate, addBookToComplete, undoBookFromComplete, deleteBookFromShelf, searchBook }
+export { books, resultBooks, generateId, generateBookObject, findBook, findBookIndex, findResultBookIndex, findBookContain, addBook, editBook, showForUpdate, addBookToComplete, undoBookFromComplete, deleteBookFromShelf, searchBook };

@@ -81,4 +81,4 @@ function putBook(bookObject) {
 
 
 
-export { RENDER_EVENT, putBook }
+export { RENDER_EVENT, putBook };
