@@ -52,6 +52,17 @@ section h2 {
     text-align: center;
 }
 
+.form-container {
+    width: 640px;
+    max-width: 100%;
+    margin-inline: auto;
+}
+
+#addBookWrapper,
+#editWrapper {
+    width: 100%;
+}
+
 #bookForm,
 #editbookForm {
     display: flex;
@@ -115,10 +126,11 @@ button:hover {
 .book-container {
     border: 1px solid #527853;
     padding: 0.5rem;
-    width: 300px;
+    width: 230px;
+ 
     
     display: flex;
-    flex-direction: column;
+    flex-direction: column ;
     
     justify-content: space-between;
     align-self: stretch;
@@ -149,8 +161,9 @@ button:hover {
     gap: 0.5rem;
     flex-wrap: wrap;
     
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    
 }
 
 .swal-text {
