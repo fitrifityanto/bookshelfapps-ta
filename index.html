@@ -9,13 +9,14 @@
     <!--    my Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+      
+<!--    font awesome 6.6.0-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script defer src="assets/js/main.js" type="module"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      
   </head>
   <body>
     <header>
@@ -23,7 +24,7 @@
     </header>
 
     <main>
-      <section>
+      <section class="form-container">
         <div id="addBookWrapper">
             <h2>Tambah Buku Baru</h2>
             <form id="bookForm" data-testid="bookForm">
@@ -47,8 +48,9 @@
                   data-testid="bookFormIsCompleteCheckbox"
                 />
               </div>
+                
               <button id="bookFormSubmit" type="submit" data-testid="bookFormSubmitButton">
-                Masukkan Buku ke rak <span>Belum selesai dibaca</span>
+                Masukkan Buku ke rak Belum selesai dibaca
               </button>
             </form>
         </div>
@@ -83,30 +85,33 @@
         </div>
       </section>
 
-      <section>
-        <h2>Cari Buku</h2>
+      <section class="book-search-container">
         <form id="searchBook" data-testid="searchBookForm">
           <label for="searchBookTitle">Judul</label>
           <input id="searchBookTitle" type="text" data-testid="searchBookFormTitleInput" />
           <button id="searchSubmit" type="submit" data-testid="searchBookFormSubmitButton">
             Cari
           </button>
-        </form>
+        </form> 
       </section>
 
-      <section>
+      <section class="shelf-container">
         <h2>Belum selesai dibaca</h2>
 
         <div id="incompleteBookList" data-testid="incompleteBookList">
         </div>
       </section>
 
-      <section>
+      <section class="shelf-container">
         <h2>Selesai dibaca</h2>
 
         <div id="completeBookList" data-testid="completeBookList">
         </div>
       </section>
     </main>
+    <footer>
+        <p><b>BookShelfApp </b>yang Kamu akses ini merupakan lanjutan dari tugas akhir di kelas Dicoding yang <a href="https://proyek-bookshelfapp-tugasakhir.vercel.app/" target="_blank"> telah saya submit</a>.</p>
+        <p>fitriningtyas</p>
+    </footer>
   </body>
 </html>

@@ -23,12 +23,18 @@ function putBook(bookObject) {
   container.setAttribute('data-testid', 'bookItem');
     
   container.classList.add('book-container');
+  
+  const teksContainer = document.createElement('div');
+  teksContainer.classList.add('teks-container');
     
-  container.append(textTitle, textAuthor, textYear);
+  teksContainer.append(textTitle, textAuthor, textYear);
+    
+  container.append(teksContainer);
     
     
   const completeButton = document.createElement('button');
   completeButton.classList.add('complete-button');
+
     
   const buttonContainer = document.createElement('div');
   buttonContainer.classList.add('button-container');
@@ -36,14 +42,19 @@ function putBook(bookObject) {
   //  element tombol edit
   const editButton = document.createElement('button');
   editButton.setAttribute('data-testid', 'bookItemEditButton');
-  editButton.innerText = 'Edit';
   editButton.classList.add('edit-button');
+  const iconEdit = document.createElement('i');
+  iconEdit.classList.add('fa-solid', 'fa-pen');
+  editButton.append(iconEdit);
 
   //  element tombol delete
   const deleteButton = document.createElement('button');
   deleteButton.setAttribute('data-testid', 'bookItemDeleteButton');
-  deleteButton.innerText = 'Hapus';
   deleteButton.classList.add('delete-button');
+  const iconDelete = document.createElement('i');
+  iconDelete.classList.add('fa-solid', 'fa-trash-can');
+  deleteButton.append(iconDelete);
+    
     
   buttonContainer.append(completeButton, editButton, deleteButton);
   container.append(buttonContainer);
@@ -60,8 +71,9 @@ function putBook(bookObject) {
     
   if (bookObject.isComplete) {
     completeButton.setAttribute('data-testid', 'bookItemIsCompleteButton');
-    completeButton.innerText = 'Belum selesai dibaca';
-
+    const iconButton = document.createElement('i');
+    iconButton.classList.add('fa-solid', 'fa-arrow-right-from-bracket');
+    completeButton.append(iconButton);
             
     completeButton.addEventListener('click', function () {
       undoBookFromComplete(bookObject.id);
@@ -69,7 +81,10 @@ function putBook(bookObject) {
   }
   else {
     completeButton.setAttribute('data-testid', 'bookItemIsCompleteButton');
-    completeButton.innerText = 'Selesai dibaca';
+    const iconButton = document.createElement('i');
+    iconButton.classList.add('fa-solid', 'fa-arrow-right-to-bracket');
+    completeButton.append(iconButton);
+      
         
     completeButton.addEventListener('click', function () {
       addBookToComplete(bookObject.id);
@@ -81,4 +96,4 @@ function putBook(bookObject) {
 
 
 
-export { RENDER_EVENT, putBook }
+export { RENDER_EVENT, putBook };

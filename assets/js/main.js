@@ -26,16 +26,29 @@ document.addEventListener('DOMContentLoaded', function () {
     searchBook();
   });
     
+  const checkCompleted = document.getElementById('bookFormIsComplete');
+    
+
+  checkCompleted.addEventListener('change', function (event) {
+    const checked = event.target.checked;
+    if (checked) {
+      document.getElementById('bookFormSubmit').innerText = 'Masukkan Buku ke rak Selesai dibaca';
+    }
+    else {
+      document.getElementById('bookFormSubmit').innerText = 'Masukkan Buku ke rak Belum selesai dibaca';
+    }
+
+  });
+    
   if (isStorageExist()) {
     loadDataFromStorage();
   }
 });
 
 document.addEventListener(SAVED_EVENT, function () {
-    
-  alert('Kamu berhasil menyimpan buku');
-  //    console.log(localStorage.getItem(STORAGE_KEY));
-
+  swal({
+    icon: "success",
+  });
 });
 
 document.addEventListener(RENDER_EVENT, function () {
