@@ -26,6 +26,20 @@ document.addEventListener('DOMContentLoaded', function () {
     searchBook();
   });
     
+  const checkCompleted = document.getElementById('bookFormIsComplete');
+    
+
+  checkCompleted.addEventListener('change', function (event) {
+    const checked = event.target.checked;
+    if (checked) {
+      document.getElementById('bookFormSubmit').innerText = 'Masukkan Buku ke rak Selesai dibaca';
+    }
+    else {
+      document.getElementById('bookFormSubmit').innerText = 'Masukkan Buku ke rak Belum selesai dibaca';
+    }
+
+  });
+    
   if (isStorageExist()) {
     loadDataFromStorage();
   }

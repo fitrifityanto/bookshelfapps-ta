@@ -53,6 +53,19 @@ function findBookContain(bookTitle) {
   return resultBooks;
 }
 
+function clearInput() {
+  document.getElementById('bookFormTitle').value = '';
+  document.getElementById('bookFormAuthor').value = '';
+  document.getElementById('bookFormYear').value = '';
+  document.getElementById('bookFormIsComplete').checked = false;
+    
+  document.getElementById("idbook").value = '';
+  document.getElementById('titleUpdate').value = '';
+  document.getElementById('updateAuthor').value = '';
+  document.getElementById('updateYear').value = '';
+  document.getElementById('updateIsCompleted').checked = false;
+}
+
 function addBook() {
   const bookTitle = document.getElementById('bookFormTitle').value;
   const bookAuthor = document.getElementById('bookFormAuthor').value;
@@ -64,6 +77,7 @@ function addBook() {
   books.push(bookObject);
     
   document.dispatchEvent(new Event(RENDER_EVENT));
+  clearInput();
   saveBook();
 }
 
@@ -82,6 +96,7 @@ function editBook() {
   bookUpdate[0].isComplete = updateIsCompleted;
     
   document.dispatchEvent(new Event(RENDER_EVENT));
+  clearInput();
   saveBook();
     
 }
@@ -173,6 +188,8 @@ function searchBook() {
       document.getElementById('addBookWrapper').hidden = false;
     }
     document.getElementById('addBookWrapper').hidden = false;
+    document.getElementById('editWrapper').hidden = true;
+    clearInput();
   }
   document.dispatchEvent(new Event(RENDER_EVENT));
 }
