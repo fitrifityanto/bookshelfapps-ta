@@ -54,11 +54,6 @@ function findBookContain(bookTitle) {
 }
 
 function clearInput() {
-  document.getElementById('bookFormTitle').value = '';
-  document.getElementById('bookFormAuthor').value = '';
-  document.getElementById('bookFormYear').value = '';
-  document.getElementById('bookFormIsComplete').checked = false;
-    
   document.getElementById("idbook").value = '';
   document.getElementById('titleUpdate').value = '';
   document.getElementById('updateAuthor').value = '';
@@ -77,8 +72,10 @@ function addBook() {
   books.push(bookObject);
     
   document.dispatchEvent(new Event(RENDER_EVENT));
-  clearInput();
   saveBook();
+  setTimeout(() => {
+    location.reload();
+  }, 2000);
 }
 
 function editBook() {
@@ -96,12 +93,13 @@ function editBook() {
   bookUpdate[0].isComplete = updateIsCompleted;
     
   document.dispatchEvent(new Event(RENDER_EVENT));
-  clearInput();
   saveBook();
     
 }
 
 function showForUpdate(bookId) {
+  document.querySelector('.form-container').hidden = false;
+    
   document.getElementById('editWrapper').hidden = false;
   document.getElementById('addBookWrapper').hidden = true;
   document.getElementById('titleUpdate').focus();
@@ -163,9 +161,9 @@ function deleteBookFromShelf(bookId) {
 
 function searchBook() {
   const searchBookTitle = document.getElementById('searchBookTitle').value;
-  document.getElementById('addBookWrapper').hidden = true;
     
   if (searchBookTitle !== '') {
+    document.querySelector('.form-container').hidden = true;
     const booksTarget = findBookContain(searchBookTitle);
     
     if (resultBooks.length) {

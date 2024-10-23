@@ -50,12 +50,13 @@ footer {
     width: 100%;
     background-color: #527853;
     padding-block: 2px;
+    padding-inlne: 1rem;
 }
 
 footer p {
     color: white;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     margin-block: 6px;
     padding-block: 0.3rem;
 }
@@ -165,7 +166,6 @@ button {
 
 .book-container p {
     line-height: 1;
-    
 }
 
 .button-container {
@@ -191,10 +191,15 @@ button {
     align-items: center;
 }
 
+footer p a:hover {
+    text-decoration: underline;
+}
+
 .swal-text {
     font-family: 'Crimson Text', serif;
     font-size: 1.2rem;
 }
+
 
 @media screen and (max-width: 412px) {
     .book-container {
