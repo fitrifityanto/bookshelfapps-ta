@@ -23,8 +23,13 @@ function putBook(bookObject) {
   container.setAttribute('data-testid', 'bookItem');
     
   container.classList.add('book-container');
+  
+  const teksContainer = document.createElement('div');
+  teksContainer.classList.add('teks-container');
     
-  container.append(textTitle, textAuthor, textYear);
+  teksContainer.append(textTitle, textAuthor, textYear);
+    
+  container.append(teksContainer);
     
     
   const completeButton = document.createElement('button');

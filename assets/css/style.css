@@ -8,8 +8,8 @@ body {
     margin: 0;
     padding: 0;
     
-    font-family: 'Crimson Text', serif;
-    font-size: 1.2rem;
+    font-family: 'Nunito', serif;
+    font-size: 1.05rem;
     line-height: 1.2;
 }
 
@@ -44,6 +44,20 @@ main {
     
     display: flex;
     flex-direction: column;
+}
+
+footer {
+    width: 100%;
+    background-color: #527853;
+    padding-block: 2px;
+}
+
+footer p {
+    color: white;
+    text-align: center;
+    font-size: 0.95rem;
+    margin-block: 6px;
+    padding-block: 0.3rem;
 }
 
 section {
@@ -109,6 +123,7 @@ button {
     background-color: #ee7214;
     color: white;
     font-size: 1rem;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24);
     
     transition-duration: 0.5s;
 }
@@ -134,10 +149,11 @@ button {
 }
 
 .book-container {
-    border: 1px solid #527853;
     padding: 0.5rem;
     flex-basis: 230px;
     max-width: 100%;
+    background-color: #f2fcf3;
+    box-shadow: rgba(82, 120, 83, 0.5) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
  
     
     display: flex;
@@ -147,21 +163,28 @@ button {
     align-self: stretch;
 }
 
+.book-container p {
+    line-height: 1;
+    
+}
+
 .button-container {
     display: flex;
-/*    gap:0.5rem;*/
 }
 
 .button-container button {
-    font-size: 0.75rem;
     color: #ee7214;
     background-color: transparent;
+}
+
+.button-container button i {
+    font-size: 1.2rem;
 }
 
 #incompleteBookList,
 #completeBookList {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
     
     justify-content: flex-start;
@@ -173,8 +196,8 @@ button {
     font-size: 1.2rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 412px) {
     .book-container {
-        flex: 1 250px;
+        flex: 1 230px;
     }
 }
