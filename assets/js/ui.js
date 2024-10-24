@@ -7,20 +7,15 @@ const RENDER_EVENT = 'render-book';
 
 function putBook(bookObject) {
   const textTitle = document.createElement('h3');
-  textTitle.setAttribute('data-testid', 'bookItemTitle');
   textTitle.innerText = bookObject.title;
     
   const textAuthor = document.createElement('p');
-  textAuthor.setAttribute('data-testid', 'bookItemAuthor');
   textAuthor.innerText = 'Penulis: ' + bookObject.author;
     
   const textYear = document.createElement('p');
-  textYear.setAttribute('data-testid', 'bookItemYear');
   textYear.innerText = 'Tahun: ' + bookObject.year;
     
   const container = document.createElement('div');
-  container.setAttribute('data-bookid', `${bookObject.id}`);
-  container.setAttribute('data-testid', 'bookItem');
     
   container.classList.add('book-container');
   
@@ -41,7 +36,6 @@ function putBook(bookObject) {
   
   //  element tombol edit
   const editButton = document.createElement('button');
-  editButton.setAttribute('data-testid', 'bookItemEditButton');
   editButton.classList.add('edit-button');
   const iconEdit = document.createElement('i');
   iconEdit.classList.add('fa-solid', 'fa-pen');
@@ -49,7 +43,6 @@ function putBook(bookObject) {
 
   //  element tombol delete
   const deleteButton = document.createElement('button');
-  deleteButton.setAttribute('data-testid', 'bookItemDeleteButton');
   deleteButton.classList.add('delete-button');
   const iconDelete = document.createElement('i');
   iconDelete.classList.add('fa-solid', 'fa-trash-can');

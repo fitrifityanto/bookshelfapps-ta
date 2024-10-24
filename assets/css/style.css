@@ -67,19 +67,19 @@ section {
     padding: 1rem;
 }
 
-main .form-container h2 {
+main #addBookWrapper h2 {
     text-align: center;
 }
 
-.form-container {
-    width: 640px;
-    max-width: 100%;
-    margin-inline: auto;
+main #editWrapper h2 {
+    text-align: center;
 }
 
 #addBookWrapper,
 #editWrapper {
-    width: 100%;
+    width: 640px;
+    max-width: 100%;
+    margin-inline: auto;
 }
 
 #editWrapper {

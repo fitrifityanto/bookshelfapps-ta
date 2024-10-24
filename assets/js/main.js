@@ -1,6 +1,6 @@
 import { RENDER_EVENT, putBook } from './ui.js';
 import { STORAGE_KEY, SAVED_EVENT, isStorageExist, getLocalStorage, loadDataFromStorage, saveBook } from './storage.js';
-import { books, resultBooks, generateId, generateBookObject, findBook, findBookIndex, findResultBookIndex, findBookContain, addBook, editBook, showForUpdate, addBookToComplete, undoBookFromComplete, deleteBookFromShelf, searchBook } from './bookManager.js';
+import { books, resultBooks, generateId, generateBookObject, findBook, findBookIndex, findResultBookIndex, findBookContain, clearInput, addBook, editBook, showForUpdate, addBookToComplete, undoBookFromComplete, deleteBookFromShelf, searchBook } from './bookManager.js';
 
 
 
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   submitForm.addEventListener('submit', function (event) {
     event.preventDefault();
     addBook();
+    clearInput();
   });
     
   const editbookForm = document.getElementById('editbookForm');

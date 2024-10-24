@@ -24,72 +24,70 @@
     </header>
 
     <main>
-      <section class="form-container">
-        <div id="addBookWrapper">
-            <h2>Tambah Buku Baru</h2>
-            <form id="bookForm" data-testid="bookForm">
-              <div class="form-input">
+    <section id="addBookWrapper">
+        <h2>Tambah Buku Baru</h2>
+        <form id="bookForm" data-testid="bookForm">
+            <div class="form-input">
                 <label for="bookFormTitle">Judul</label>
-                <input id="bookFormTitle" type="text" required data-testid="bookFormTitleInput" />
-              </div>
-              <div class="form-input">
+                <input id="bookFormTitle" type="text" required />
+            </div>
+            <div class="form-input">
                 <label for="bookFormAuthor">Penulis</label>
-                <input id="bookFormAuthor" type="text" required data-testid="bookFormAuthorInput" />
-              </div>
-              <div class="form-input">
+                <input id="bookFormAuthor" type="text" required />
+            </div>
+            <div class="form-input">
                 <label for="bookFormYear">Tahun</label>
-                <input id="bookFormYear" type="number" required data-testid="bookFormYearInput" />
-              </div>
-              <div class="checkbox">
+                <input id="bookFormYear" type="number" required />
+            </div>
+            <div class="checkbox">
                 <label for="bookFormIsComplete">Selesai dibaca</label>
                 <input
-                  id="bookFormIsComplete"
-                  type="checkbox"
-                  data-testid="bookFormIsCompleteCheckbox"
+                id="bookFormIsComplete"
+                type="checkbox"
                 />
-              </div>
-                
-              <button id="bookFormSubmit" type="submit" data-testid="bookFormSubmitButton">
-                Masukkan Buku ke rak Belum selesai dibaca
-              </button>
-            </form>
-        </div>
+            </div>
+
+            <button id="bookFormSubmit" type="submit">
+            Masukkan Buku ke rak Belum selesai dibaca
+            </button>
+        </form>
+    </section>
         
-        <div id="editWrapper">
-            <h2>Edit Buku</h2>
-            <form id="editbookForm">
-              <div class="form-input">
-                <label for="titleUpdate">Judul</label>
-                <input id="titleUpdate" type="text" required  />
-                <input id="idbook" type="hidden"/>
-              </div>
-              <div class="form-input">
-                <label for="updateAuthor">Penulis</label>
-                <input id="updateAuthor" type="text" required  />
-              </div>
-              <div class="form-input">
-                <label for="updateYear">Tahun</label>
-                <input id="updateYear" type="number" required />
-              </div>
-              <div class="checkbox">
-                <label for="updateIsCompleted">Selesai dibaca</label>
-                <input
-                  id="updateIsCompleted"
-                  type="checkbox"
-                />
-              </div>
-              <button id="editbookFormSubmit" type="submit">
-                Update buku
-              </button>
-            </form>
-        </div>
-      </section>
+    <section id="editWrapper">
+        <h2>Edit Buku</h2>
+        <form id="editbookForm">
+            <div class="form-input">
+            <label for="titleUpdate">Judul</label>
+            <input id="titleUpdate" type="text" required  />
+            <input id="idbook" type="hidden"/>
+            </div>
+            <div class="form-input">
+            <label for="updateAuthor">Penulis</label>
+            <input id="updateAuthor" type="text" required  />
+            </div>
+            <div class="form-input">
+            <label for="updateYear">Tahun</label>
+            <input id="updateYear" type="number" required />
+            </div>
+            <div class="checkbox">
+            <label for="updateIsCompleted">Selesai dibaca</label>
+            <input
+              id="updateIsCompleted"
+              type="checkbox"
+            />
+            </div>
+            <button id="editbookFormSubmit" type="submit">
+            Update buku
+            </button>
+        </form>       
+    </section>
+      
 
       <section class="book-search-container">
-        <form id="searchBook" data-testid="searchBookForm">
+        <form id="searchBook" >
           <label for="searchBookTitle">Judul</label>
-          <input id="searchBookTitle" type="text" data-testid="searchBookFormTitleInput" />
-          <button id="searchSubmit" type="submit" data-testid="searchBookFormSubmitButton">
+          <input id="searchBookTitle" type="text" />
+          <button id="searchSubmit" type="submit">
             Cari
           </button>
         </form> 
@@ -98,14 +96,14 @@
       <section class="shelf-container">
         <h2>Belum selesai dibaca</h2>
 
-        <div id="incompleteBookList" data-testid="incompleteBookList">
+        <div id="incompleteBookList">
         </div>
       </section>
 
       <section class="shelf-container">
         <h2>Selesai dibaca</h2>
 
-        <div id="completeBookList" data-testid="completeBookList">
+        <div id="completeBookList">
         </div>
       </section>
     </main>

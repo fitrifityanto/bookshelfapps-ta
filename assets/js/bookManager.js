@@ -54,11 +54,12 @@ function findBookContain(bookTitle) {
 }
 
 function clearInput() {
-  document.getElementById("idbook").value = '';
-  document.getElementById('titleUpdate').value = '';
-  document.getElementById('updateAuthor').value = '';
-  document.getElementById('updateYear').value = '';
-  document.getElementById('updateIsCompleted').checked = false;
+  document.getElementById('bookFormTitle').value = '';
+  document.getElementById('bookFormAuthor').value = '';
+  document.getElementById('bookFormYear').value = '';
+  document.getElementById('bookFormIsComplete').checked = false;
+    
+  document.getElementById('bookFormSubmit').innerText = 'Masukkan Buku ke rak Belum selesai dibaca';
 }
 
 function addBook() {
@@ -73,9 +74,6 @@ function addBook() {
     
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveBook();
-  setTimeout(() => {
-    location.reload();
-  }, 2000);
 }
 
 function editBook() {
@@ -164,10 +162,20 @@ function searchBook() {
   if (searchBookTitle !== '') {
       
     const booksTarget = findBookContain(searchBookTitle);
+      
+    //      cek apakah form edit aktif dengan isi valuenya, jika ada hapus, hilangkan form edit dan tampilkan form add
+    const idBook = document.getElementById('idbook').value;
+    if (idBook !== '') {
+      clearInput();
+      document.getElementById('editWrapper').style.display = 'none';
+      document.getElementById('addBookWrapper').style.display = 'block';
+    }
     
+    //      cek hasil pencarian sebelumnya. jika ada, kosongkan
     if (resultBooks.length) {
       resultBooks.length = 0;
     }
+      
     if (booksTarget.length == 0) {
       swal({
         text: "maaf, tidak ada judul buku yang kamu cari",
@@ -194,4 +202,4 @@ function searchBook() {
 
 
 
-export { books, resultBooks, generateId, generateBookObject, findBook, findBookIndex, findResultBookIndex, findBookContain, addBook, editBook, showForUpdate, addBookToComplete, undoBookFromComplete, deleteBookFromShelf, searchBook };
+export { books, resultBooks, generateId, generateBookObject, findBook, findBookIndex, findResultBookIndex, findBookContain, clearInput, addBook, editBook, showForUpdate, addBookToComplete, undoBookFromComplete, deleteBookFromShelf, searchBook };
