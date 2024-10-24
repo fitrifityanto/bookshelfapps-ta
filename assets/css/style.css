@@ -82,6 +82,10 @@ main .form-container h2 {
     width: 100%;
 }
 
+#editWrapper {
+    display: none;
+}
+
 #bookForm,
 #editbookForm {
     display: flex;
@@ -158,7 +162,7 @@ button {
  
     
     display: flex;
-    flex-direction: column ;
+    flex-direction: column;
     
     justify-content: space-between;
     align-self: stretch;

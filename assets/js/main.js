@@ -5,8 +5,6 @@ import { books, resultBooks, generateId, generateBookObject, findBook, findBookI
 
 
 document.addEventListener('DOMContentLoaded', function () {
-
-  document.getElementById('editWrapper').hidden = true;
     
   const submitForm = document.getElementById('bookForm');
   submitForm.addEventListener('submit', function (event) {

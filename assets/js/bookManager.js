@@ -98,10 +98,9 @@ function editBook() {
 }
 
 function showForUpdate(bookId) {
-  document.querySelector('.form-container').hidden = false;
-    
-  document.getElementById('editWrapper').hidden = false;
-  document.getElementById('addBookWrapper').hidden = true;
+  document.getElementById('editWrapper').style.display = 'block';
+  document.getElementById('addBookWrapper').style.display = 'none';
+
   document.getElementById('titleUpdate').focus();
     
   const bookFilter = books.filter((el) => el.id === bookId);
@@ -163,7 +162,7 @@ function searchBook() {
   const searchBookTitle = document.getElementById('searchBookTitle').value;
     
   if (searchBookTitle !== '') {
-    document.querySelector('.form-container').hidden = true;
+      
     const booksTarget = findBookContain(searchBookTitle);
     
     if (resultBooks.length) {
@@ -176,6 +175,7 @@ function searchBook() {
       });
       return;
     }
+    document.getElementById('addBookWrapper').style.display = 'none';
     for (const bookItem of booksTarget) {
       resultBooks.push(bookItem);
     }
@@ -183,10 +183,10 @@ function searchBook() {
   else {
     if (resultBooks.length) {
       resultBooks.length = 0;
-      document.getElementById('addBookWrapper').hidden = false;
+      document.getElementById('editWrapper').style.display = 'none';
     }
-    document.getElementById('addBookWrapper').hidden = false;
-    document.getElementById('editWrapper').hidden = true;
+    document.getElementById('editWrapper').style.display = 'none';
+    document.getElementById('addBookWrapper').style.display = 'block';
     clearInput();
   }
   document.dispatchEvent(new Event(RENDER_EVENT));
