@@ -67,19 +67,23 @@ section {
     padding: 1rem;
 }
 
-main .form-container h2 {
+main #addBookWrapper h2 {
     text-align: center;
 }
 
-.form-container {
+main #editWrapper h2 {
+    text-align: center;
+}
+
+#addBookWrapper,
+#editWrapper {
     width: 640px;
     max-width: 100%;
     margin-inline: auto;
 }
 
-#addBookWrapper,
 #editWrapper {
-    width: 100%;
+    display: none;
 }
 
 #bookForm,
@@ -158,7 +162,7 @@ button {
  
     
     display: flex;
-    flex-direction: column ;
+    flex-direction: column;
     
     justify-content: space-between;
     align-self: stretch;
